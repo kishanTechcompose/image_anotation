@@ -5,28 +5,152 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Annotations</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="shortcut icon"
+      href="./png-clipart-annotation-annotated-bibliography-book-book-angle-text.png"
+      type="image/x-icon"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/fontawesome.min.css"
+      integrity="sha512-cHxvm20nkjOUySu7jdwiUxgGy11vuVPE9YeK89geLMLMMEOcKFyS2i+8wo0FOwyQO/bL8Bvq1KMsqK4bbOsPnA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <div class="controls">
-      <button class="control-btn" onclick="setType('ractangle')">
-        Ractangle
-      </button>
-      <button class="control-btn" onclick="setType('circle')">Circle</button>
-      <button class="control-btn" onclick="setType('point')">Point</button>
-      <button class="control-btn" onclick="setType('clear')">Clear</button>
-    </div>
-    <div style="display: none">
-      <textarea name="ctrZones"></textarea>
-    </div>
-    <div id="main-body">
-      <img
-        src="./images.jpeg"
-        id="image"
-        class="imagePortrait"
-        onClick="newZone(event)"
-      />
+    <div class="d-flex justify-content-between align-content-center">
+      <div class="">
+        <div class="controls mx-1 d-flex gap-1 flex-column">
+          <div id="shapes-btn">
+            <button
+              class="btn btn-outline-primary"
+              onclick="setType('rectangle')"
+            >
+              Rectangle <i class="fa fa-square"></i>
+            </button>
+            <button class="btn btn-outline-primary" onclick="setType('oval')">
+              Oval <i class="fa-solid fa-circle"></i>
+            </button>
+            <button class="btn btn-outline-primary" onclick="setType('point')">
+              Point <i class="fa fa-circle"></i>
+            </button>
+            <button class="btn btn-outline-primary" onclick="setType('delete')">
+              Delete <i class="fa-solid fa-trash"></i>
+            </button>
+            <button class="btn btn-outline-primary" onclick="setType('clear')">
+              Clear All <i class="fa-solid fa-eraser"></i>
+            </button>
+            <button class="btn btn-outline-primary" onclick="setType('undo')">
+              Undo <i class="fa-solid fa-rotate-left"></i>
+            </button>
+            <button class="btn btn-outline-primary" onclick="setType('redo')">
+              Redo <i class="fa-solid fa-rotate-right"></i>
+            </button>
+          </div>
+          <div class="">
+            <button class="btn btn-outline-primary" onclick="setType('rotate')">
+              Rotate
+            </button>
+
+            <button class="btn btn-outline-primary" onclick="setType('zoomIn')">
+              Zoom In <i class="fa fa-plus"></i>
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              onclick="setType('zoomReset')"
+            >
+              Zoom Reset
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              onclick="setType('zoomOut')"
+            >
+              Zoom Out <i class="fa fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        <div style="display: none">
+          <textarea name="ctrZones"></textarea>
+        </div>
+        <div class="">
+          <div class="main-container">
+            <div class="cont">
+              <div id="main-body">
+                <!-- <img src="" id="image" class="imagePortrait" /> -->
+                <!-- popover content -->
+                <div id="popover" class="">
+                  <div class="card" style="width: 15rem">
+                    <div class="card-body">
+                      <i class="fa-solid fa-xmark" onclick="handelClose();"></i>
+                      <ul id="details-list"></ul>
+                      <form action="" method="">
+                        <div class="mb-3">
+                          <label for="details" class="form-label"
+                            >Details</label
+                          >
+                          <input
+                            placeholder="Enter detail"
+                            autocomplete="off"
+                            type="text"
+                            class="form-control"
+                            id="details"
+                          />
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <button
+                            type="button"
+                            onclick="handelClose();"
+                            class="btn btn-outline-primary"
+                          >
+                            Close
+                          </button>
+                          <button
+                            type="button"
+                            onclick="handelSubmit();"
+                            class="btn btn-primary"
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mx-3 z-1 abcd">
+        <span id="zoomLevel"></span>
+        <div class="all-list text-primary">
+          <span>Annotation List</span>
+          <ul id="annotationList"></ul>
+        </div>
+      </div>
     </div>
   </body>
   <script src="./index.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"
+  ></script>
 </html>

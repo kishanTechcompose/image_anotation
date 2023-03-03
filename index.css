@@ -1,0 +1,192 @@
+.controls {
+  margin: 10px 0px;
+}
+
+.box:focus {
+  border: 1px solid rgb(223, 70, 70);
+}
+
+.boxNotActive:hover,
+.box:hover {
+  cursor: pointer;
+}
+
+.boxNotActive,
+.box {
+  border: 3px solid rgb(0, 0, 0);
+}
+
+.oval {
+  border-radius: 50%;
+}
+.point {
+  background-color: rgb(0, 0, 0);
+  width: 10px;
+  height: 10px;
+}
+
+.boxResize {
+  position: absolute;
+  background-color: red;
+  width: 15px;
+  height: 15px;
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
+}
+
+.resizer-left {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  position: absolute;
+  left: -6px;
+  bottom: 50%;
+  cursor: ew-resize;
+}
+
+.boxNotActive:hover .resize-bottom-right,
+.boxNotActive:hover .resize-bottom-left,
+.boxNotActive:hover .resize-top-right,
+.boxNotActive:hover .resize-top-left,
+.boxNotActive:hover .resizer-top,
+.boxNotActive:hover .resizer-bottom,
+.boxNotActive:hover .resizer-left,
+.boxNotActive:hover .resizer-right {
+  border: 1px solid rgb(255, 0, 0);
+}
+
+.resizer-right {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  position: absolute;
+  right: -6px;
+  bottom: 50%;
+  cursor: ew-resize;
+}
+
+.resizer-top {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  cursor: ns-resize;
+}
+
+.resizer-bottom {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  position: absolute;
+  right: 50%;
+  bottom: -6px;
+  cursor: ns-resize;
+}
+
+.resize-top-left {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  z-index: 10;
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  cursor: nwse-resize;
+}
+
+.resize-top-right {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  z-index: 10;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  cursor: nesw-resize;
+}
+
+.resize-bottom-left {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  z-index: 10;
+  position: absolute;
+  bottom: -6px;
+  left: -6px;
+  cursor: nesw-resize;
+}
+
+.resize-bottom-right {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  z-index: 10;
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  cursor: nwse-resize;
+}
+
+.details {
+  border: 1px solid pink;
+}
+
+#popover {
+  display: none;
+  margin-top: 10px;
+  z-index: 1;
+}
+
+.main-container {
+  height: calc(100vh - 110px);
+  width: 100vw;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(12, 85, 241);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-body {
+  border: 1px solid red;
+  position: absolute;
+}
+
+img {
+  border: 1px solid green;
+}
+
+.fa-xmark {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  margin: 10px;
+  cursor: pointer;
+}
+.fa-xmark:hover {
+  color: #0d6efd;
+}
+
+.all-list {
+  z-index: 2;
+}
+
+.annotation-link {
+  text-decoration: none;
+}
+
+.abcd {
+  position: absolute;
+  right: 0;
+  top: 0px;
+}
